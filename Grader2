@@ -1,0 +1,52 @@
+%% Erzeugen der Vektoren
+[x, y_ref] = mg_generateRandomVektor();
+
+%% Ergänzen Sie Ihren Code hier:
+
+for i = 1:length(y_ref)
+    
+    if y_ref(i) >= 5 & y_ref(i) <= 10
+       y_good(i) = [y_ref(i)];
+       y_good = nonzeros(y_good)';
+       
+       for k = 1:length(y_good)
+           x_good(k) = [k];
+       end
+    else
+        
+         y_bad(i) = [y_ref(i)];
+         y_bad = nonzeros(y_bad)';
+         
+         for j = 1:length(y_bad)
+             x_bad(j) = [j];
+         end
+    
+    end
+end
+
+y_good
+x_good
+%size(y_ref)
+size(y_good)
+size(x_good)
+size(y_bad)
+size(x_bad)
+ygrenzeunten= [5,5];
+ygrenzeoben = [10,10];
+Grenze = [0,length(y_ref)];
+%Plot
+figure
+hold on
+plot(x_good,y_good,'marker','*','linestyle','none','color','g')
+plot(x_bad,y_bad,'marker','*','linestyle','none','color','r')
+plot(Grenze,ygrenzeunten,'linestyle','--','color','k' )
+plot(Grenze,ygrenzeoben,'linestyle','--','color','k' )
+
+Y = [0,15];
+xlim = [0,y_ref];
+ylim = [Y];
+legend('Toleriert','Abgelehnt')
+
+        
+    
+    
